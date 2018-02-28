@@ -16,10 +16,23 @@ eureka:         #tells about the Eureka server details and its refresh time
 spring:    
   application:
     name: user-service   #current service name to be used by the eureka server
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  cloud:
+    stream:
+      bindings:
+        userSubscriptionsChannel:
+          destination: userSubscriptions
+      default:
+        contentType: application/json
 
 management:
   security:
     enabled: false  #disable the spring security on the management endpoints like /env, /refresh etc.
+ 
  
 logging:
   level:
